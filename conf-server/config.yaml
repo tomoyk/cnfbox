@@ -1,0 +1,18 @@
+--- 
+OS: ubuntu
+VERSION: 19.1
+ENV: 
+  a: 10
+  b: 20
+CMD: 
+  - "apt-get update"
+  - "apt-get install apache2"
+DISKPART: 
+  /: 200G
+  /home: 100G
+  swap: 30G
+NETWORK: 
+  TYPE: static
+  IPADDR: 192.168.3.20/24
+  GATEWAY: "192.168.3.254"
+  DNS: "192.168.3.250"
