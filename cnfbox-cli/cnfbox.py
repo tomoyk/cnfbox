@@ -9,24 +9,26 @@ class CnfBox(object):
     @property
     def os(self):
         return f'{self._os_name} {str(self._os_version)}'
-    
+
     @property
     def user(self):
-        return f'{self._username}'    
+        return f'{self._username}'
 
     @property
     def password(self):
         return f'{self._password}'
-    
-    def _get_random_txt(self, n: int=12):
-        assert n>=12, "Need to set long password length."
-        import random, string
-        randlst = [random.choice(string.ascii_letters + string.digits) for i in range(n)]
+
+    def _get_random_txt(self, n: int = 12):
+        assert n >= 12, "Need to set long password length."
+        import random
+        import string
+        randlst = [random.choice(string.ascii_letters + string.digits)
+                   for i in range(n)]
         return ''.join(randlst)
 
     def __init__(self):
         self._password = self._get_random_txt()
-    
+
     def show(self):
         pass
 
