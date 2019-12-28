@@ -7,11 +7,16 @@ class User(object):
         self._password = {u: self._get_random_txt() for u in users}
 
     def __repr__(self):
-        return self._password
+        return str(self._password)
 
     @property
     def name(self):
         return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
+        self._password = {u: self._get_random_txt() for u in value}
 
     @property
     def password(self):

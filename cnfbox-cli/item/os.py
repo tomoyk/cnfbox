@@ -16,10 +16,14 @@ class Os(object):
         return self._name
 
     @name.setter
-    def name(self, value):
+    def name(self, value: str):
         assert value in self._name_list, f'"{value}" is not supported.'
         self._name = value
 
     @property
     def version(self):
         return self._version
+
+    @version.setter
+    def version(self, value: float):
+        self._version = value

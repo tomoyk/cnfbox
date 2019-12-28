@@ -2,12 +2,8 @@ from item import os, user
 
 
 class CnfBox(object):
-    _lang: str
-
     _os: object
     _user: object
-
-    network: object
 
     @property
     def os(self):
