@@ -1,33 +1,25 @@
+from item import os, user
+
+
 class CnfBox(object):
-    _os_name: str = "ubuntu"
-    _os_version: float = 18.04
-    _username: str = 'admin'
-    _password: str = None
-    lang: str
+    _lang: str
+
+    _os: object
+    _user: object
+
     network: object
 
     @property
     def os(self):
-        return f'{self._os_name} {str(self._os_version)}'
+        return self._os
 
     @property
     def user(self):
-        return f'{self._username}'
-
-    @property
-    def password(self):
-        return f'{self._password}'
-
-    def _get_random_txt(self, n: int = 12):
-        assert n >= 12, "Need to set long password length."
-        import random
-        import string
-        randlst = [random.choice(string.ascii_letters + string.digits)
-                   for i in range(n)]
-        return ''.join(randlst)
+        return self._user
 
     def __init__(self):
-        self._password = self._get_random_txt()
+        self._os = os.Os()
+        self._user = user.User()
 
     def show(self):
         pass
