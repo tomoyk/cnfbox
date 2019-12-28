@@ -1,18 +1,11 @@
-from item import os, user
+from item import os, user, network
 
 
 class CnfBox(object):
-    @property
-    def os(self):
-        return self._os
-
-    @property
-    def user(self):
-        return self._user
-
     def __init__(self):
-        self._os = os.Os()
-        self._user = user.User()
+        self.os = os.Os()
+        self.user = user.User()
+        self.network = network.Network()
 
     def show(self):
         pass
