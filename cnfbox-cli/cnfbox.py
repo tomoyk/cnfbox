@@ -2,9 +2,6 @@ from item import os, user
 
 
 class CnfBox(object):
-    _os: object
-    _user: object
-
     @property
     def os(self):
         return self._os
