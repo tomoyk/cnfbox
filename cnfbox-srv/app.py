@@ -20,7 +20,7 @@ def update_status():
 
 @app.route('/settings', methods=['GET'])
 def read_setting():
-   """ READ: インストール設定を取得 """
+    """ READ: インストール設定を取得 """
     with open('config.yaml') as f:
         file_content = yaml.load(f, Loader=yaml.SafeLoader)
     return jsonify(file_content)
