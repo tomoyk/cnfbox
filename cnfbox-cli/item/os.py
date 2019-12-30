@@ -17,4 +17,4 @@ class Os(item.base.Base):
         self.timezone = timezone
 
     def __repr__(self):
-        return f'{self.name} {str(self.version)}'
+        return super().__repr__()
