@@ -1,2 +1,5 @@
-class Storage(object):
+import item.base
+
+
+class Storage(item.base.Base):
     pass

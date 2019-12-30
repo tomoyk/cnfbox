@@ -1,4 +1,7 @@
-class Os(object):
+import item.base
+
+
+class Os(item.base.Base):
     __NAME_LIST: tuple = ('centos', 'ubuntu', 'debian')
 
     def __init__(
