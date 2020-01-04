@@ -9,16 +9,18 @@ def index():
     return 'It works'
 
 
-@app.route('/status', methods=['GET'])
-def post_json():
-    """ READ: インストール状況を取得 """
-    req_json = request.get_json()
-    return jsonify(req_json)
+@app.route('/conf/<int:id>', methods=['GET'])
+def post_json(id):
+    return f'todo: get conf {id}'
 
 
-@app.route('/status', methods=['POST'])
+@app.route('/conf', methods=['GET'])
+def create_conf():
+    return 'There is nothing'
+
+
+@app.route('/conf', methods=['POST'])
 def update_status():
-    """ UPDATE: インストールの状況を追加/更新 """
     req_json = request.get_json()
     return jsonify(req_json)
 
