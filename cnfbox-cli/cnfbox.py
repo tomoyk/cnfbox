@@ -1,4 +1,5 @@
 from item import os, user, network
+import json
 
 
 def _get_json(dat: object) -> object:
@@ -8,7 +9,6 @@ def _get_json(dat: object) -> object:
             return item.__dict__
         else:
             raise TypeError
-    import json
     return json.dumps(dat, default=default_method, indent=4)
 
 
@@ -33,7 +33,6 @@ class CnfBox(object):
 
         """ Build HTTP Request """
         from urllib import request
-        import json
         payload = _get_json(self.__dict__)
         req_body = json.dumps(payload).encode('utf-8')
         req_method = 'POST'
