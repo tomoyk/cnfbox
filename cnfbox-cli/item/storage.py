@@ -6,9 +6,9 @@ class Storage(item.base.Base):
 
     def __init__(
             self,
-            bootloader: str,
-            auto_partition: bool,
-            clear_partition: bool):
+            bootloader: str = 'mbr',
+            auto_partition: bool = True,
+            clear_partition: bool = False):
         assert bootloader in self.__BOOTLOADER_LIST, "Invalid Bootloader Location given."
         self.bootloader = bootloader
         self.auto_partition = auto_partition
