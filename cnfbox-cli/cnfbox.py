@@ -20,8 +20,7 @@ class CnfBox(object):
 
     def show(self) -> None:
         for k, v in self.__dict__.items():
-            if k is not None:
-                print(f'{k}:'.ljust(10) + f'{v}')
+            print(f'{k}:'.ljust(10) + f'{v}')
 
     def show_json(self) -> None:
         print(_get_json(self.__dict__))
