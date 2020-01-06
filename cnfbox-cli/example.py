@@ -16,3 +16,4 @@ cb.network.gateway = '10.200.1.254'
 cb.network.dns = '10.200.1.3'
 
 print(cb.show_json())
+cb.commit()

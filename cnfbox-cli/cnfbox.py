@@ -29,7 +29,7 @@ class CnfBox(object):
         """ Get REMOTE URL """
         import os
         REMOTE_URL = os.getenv('REMOTE_URL')
-        assert REMOTE_URL is None, "Env Var 'REMOTE_URL' is not set."
+        assert REMOTE_URL, "Env Var 'REMOTE_URL' is not set."
 
         """ Build HTTP Request """
         from urllib import request
