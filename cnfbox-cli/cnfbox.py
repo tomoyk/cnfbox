@@ -18,11 +18,12 @@ class CnfBox(object):
         self.user = user.User()
         self.network = network.Network()
 
-    def show(self):
+    def show(self) -> None:
         for k, v in self.__dict__.items():
-            print(f'{k}:'.ljust(10) + f'{v}')
+            if k is not None:
+                print(f'{k}:'.ljust(10) + f'{v}')
 
-    def show_json(self):
+    def show_json(self) -> None:
         print(_get_json(self.__dict__))
 
     def commit(self):
