@@ -1,7 +1,4 @@
 from flask import Flask, request, jsonify
-from flask.ext.sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False  # JSONでの日本語文字化け対策
