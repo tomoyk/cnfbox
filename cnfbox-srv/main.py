@@ -1,7 +1,16 @@
 from flask import Flask, request, jsonify
+import pymysql.cursors
+import os
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False  # JSONでの日本語文字化け対策
+
+connection = pymysql.connect(host=os.getenv('DB_HOST'),
+                             user=os.getenv('DB_USER'),
+                             password=os.getenv('DB_PASSWD'),
+                             db=os.getenv('DB_NAME'),
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
 
 
 @app.route('/', methods=['GET'])
@@ -11,9 +20,12 @@ def index():
 
 @app.route('/conf/<int:conf_id>', methods=['GET'])
 def read_conf(conf_id):
-    # 読み取り
-    # 200 Fetch
-    return f'todo: get conf {conf_id}'
+    with connection.cursor() as cursor:
+        # Read a single record
+        sql = "SELECT `id` FROM `config` WHERE `id`=%d AND `type`='kickstart'"
+        cursor.execute(sql, int(conf_id))
+        result = cursor.fetchone()
+    return jsonify(result)
 
 
 @app.route('/conf', methods=['POST'])
