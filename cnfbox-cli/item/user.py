@@ -30,15 +30,3 @@ class User(item.base.Base):
     def user(self):
         self.name = []
         self.password = {}
-
-    @property
-    def password(self):
-        return self.password
-
-    @password.setter
-    def password(self):
-        pass
-
-    @password.deleter
-    def password(self):
-        pass
