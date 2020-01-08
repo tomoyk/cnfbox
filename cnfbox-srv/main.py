@@ -6,12 +6,14 @@ import json
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False  # JSONでの日本語文字化け対策
 
-connection = pymysql.connect(host=os.getenv('DB_HOST'),
-                             user=os.getenv('DB_USER'),
-                             password=os.getenv('DB_PASSWD'),
-                             db=os.getenv('DB_NAME'),
-                             charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
+connection = pymysql.connect(
+    host=os.getenv('DB_HOST'),
+    user=os.getenv('DB_USER'),
+    password=os.getenv('DB_PASSWD'),
+    db=os.getenv('DB_NAME'),
+    unix_socket=os.getenv('UNIX_SOCKET') if os.getenv('UNIX_SOCKET') else None,
+    charset='utf8mb4',
+    cursorclass=pymysql.cursors.DictCursor)
 
 
 @app.route('/', methods=['GET'])
