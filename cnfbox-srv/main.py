@@ -70,13 +70,15 @@ def read_conf_pr(conf_id):
 def create_conf():
     req_data = request.get_data()
     req_txt = req_data.decode('utf-8')
-    # assert json.loads(req_json), 'Fatal Error'
     with connection.cursor() as cursor:
         sql = "INSERT INTO config (`content`) VALUES (%s)"
-        cursor.execute(sql, req_txt)
+        cursor.execute(sql, json.loads(req_txt))
+        sql = "SELECT last_insert_id() AS 'id'"
+        cursor.execute(sql)
+        result = cursor.fetchone()
 
     connection.commit()
-    return jsonify({"status": "ok"})
+    return jsonify({"status": "ok", "id": result['id']})
 
 
 @app.route('/conf/<int:id>', methods=['PUT'])
