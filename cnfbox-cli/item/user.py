@@ -3,7 +3,7 @@ import item.base
 
 class User(item.base.Base):
     def __init__(self, users: list = ["admin"]):
-        self.name = users
+        self.__name = users
         self.password = {u: self._get_random_txt() for u in users}
 
     def __repr__(self):
@@ -18,15 +18,15 @@ class User(item.base.Base):
         return ''.join(randlst)
 
     @property
-    def user(self):
-        return self.name
+    def names(self):
+        return self.__name
 
-    @user.setter
-    def user(self, users):
-        self.name = users
+    @names.setter
+    def names(self, users):
+        self.__name = users
         self.password = {u: self._get_random_txt() for u in users}
 
-    @user.deleter
-    def user(self):
-        self.name = []
+    @names.deleter
+    def name(self):
+        self.__name = []
         self.password = {}

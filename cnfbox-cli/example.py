@@ -8,7 +8,7 @@ cb.os.lang = 'us'
 cb.os.keyboard = 'jp'
 cb.os.timezone = 'Asia/Tokyo'
 
-cb.user = ['alice', 'bob']
+cb.user.name = ['alice', 'bob']
 
 cb.network.device = 'ens160'
 cb.network.iptype = 'static'
