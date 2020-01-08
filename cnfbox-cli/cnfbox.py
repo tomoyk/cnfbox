@@ -1,4 +1,4 @@
-from item import os, user, network
+from item import os, user, network, storage
 import json
 
 
@@ -17,6 +17,7 @@ class CnfBox(object):
         self.os = os.Os()
         self.user = user.User()
         self.network = network.Network()
+        self.storage = storage.Storage()
 
     def show(self) -> None:
         for k, v in self.__dict__.items():
