@@ -41,7 +41,7 @@ class CnfBox(object):
             'Content-Type': 'application/json',
         }
         req = request.Request(
-            REMOTE_URL,
+            REMOTE_URL + '/conf',
             data=req_body,
             method=req_method,
             headers=req_headers)
