@@ -47,7 +47,7 @@ def read_conf_ks(conf_id):
 
     import crypt
     passwords = params['user']['password']
-    for k_user, v_pwd in passwords:
+    for k_user, v_pwd in passwords.items():
         params['user']['password'][k_user] = crypt.crypt(
             v_pwd, crypt.METHOD_SHA512)
 

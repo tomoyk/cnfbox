@@ -8,6 +8,7 @@ cb.os.lang = 'us'
 cb.os.keyboard = 'jp'
 cb.os.timezone = 'Asia/Tokyo'
 
+cb.user.root_password = 'the-secure-password'
 cb.user.name = ['alice', 'bob']
 
 cb.network.device = 'ens160'
