@@ -76,5 +76,11 @@ def update_status():
     return jsonify({"status": "ok"})
 
 
+@app.errorhandler(404)
+def error_404():
+    response = jsonify({"status": "not found"})
+    return response, 404
+
+
 if __name__ == '__main__':
     app.run(debug=True)

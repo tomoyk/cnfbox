@@ -20,6 +20,10 @@ def _validate_iptype_format(type_: str) -> str:
     return type_
 
 
+def _validate_hostname_format(hostname: str) -> str:
+    return hostname
+
+
 class Network(item.base.Base):
     def __init__(
             self,
@@ -28,13 +32,15 @@ class Network(item.base.Base):
             ipaddr: str = '192.168.0.2',
             cidr: int = 24,
             gateway: str = '192.168.0.1',
-            dns: str = '1.1.1.1',):
+            dns: str = '1.1.1.1',
+            hostname: str = 'localhost'):
         self.device = device
         self.iptype = _validate_iptype_format(iptype)
         self.ipaddr = _validate_ip_format(ipaddr)
         self.cidr = _validate_cidr_range(cidr)
         self.gateway = _validate_ip_format(gateway)
         self.dns = _validate_ip_format(dns)
+        self.hostname = _validate_hostname_format(hostname)
 
     def __repr__(self):
         return super().__repr__()

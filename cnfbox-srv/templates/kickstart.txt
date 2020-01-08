@@ -1,0 +1,22 @@
+keyboard '{{ val.os.keyboard | default("us") }}'
+# python -c 'import crypt; print(crypt.crypt("My Password", crypt.METHOD_SHA512))'
+rootpw --iscrypted $6Xe976bw.6V2
+lang ja_JP
+timezone Asia/Tokyo --isUtc
+text
+network --device=eth0 --bootproto=dhcp --onboot=yes --activate
+network --hostname=cbnoc-empty
+firewall --enabled --port=ssh,snmp
+firstboot --enable
+selinux --permissive
+skipx
+
+bootloader --location=mbr
+clearpart --all --initlabel
+autopart --nohome --nolvm
+
+# yum update
+repo --name=updates
+
+# Reboot after installation
+reboot --eject
