@@ -32,15 +32,26 @@ def read_conf(conf_id):
     return jsonify(json.loads(str_json))
 
 
+def get_content(req_id: int):
+    with connection.cursor() as cursor:
+        sql = "SELECT `content` FROM `config` WHERE `id`=%s"
+        cursor.execute(sql, str(req_id))
+    return cursor.fetchone()
+
+
 # DOWNLOAD KICKSTART
 @app.route('/conf/<int:conf_id>/kickstart', methods=['GET'])
 def read_conf_ks(conf_id):
-    with connection.cursor() as cursor:
-        sql = "SELECT `content` FROM `config` WHERE `id`=%s"
-        cursor.execute(sql, str(conf_id))
-        result = cursor.fetchone()
-    str_json = result.get('content')
-    return jsonify(json.loads(str_json))
+    raw_json = get_content(conf_id).get('content')
+    params = json.loads(raw_json)
+
+    import crypt
+    passwords = params['user']['password']
+    for k_user, v_pwd in passwords:
+        params['user']['password'][k_user] = crypt.crypt(
+            v_pwd, crypt.METHOD_SHA512)
+
+    return render_template('kickstart.txt', val=params)
 
 
 # DOWNLOAD PRESEED
