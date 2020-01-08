@@ -46,6 +46,8 @@ def read_conf_ks(conf_id):
     params = json.loads(raw_json)
 
     import crypt
+    params['user']['root_password'] = crypt.crypt(
+        params['user']['root_password'], crypt.METHOD_SHA512)
     passwords = params['user']['password']
     for k_user, v_pwd in passwords.items():
         params['user']['password'][k_user] = crypt.crypt(

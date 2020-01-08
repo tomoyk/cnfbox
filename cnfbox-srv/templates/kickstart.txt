@@ -1,5 +1,4 @@
 keyboard '{{ val.os.keyboard | default("us") }}'
-# python -c 'import crypt; print(crypt.crypt("My Password", crypt.METHOD_SHA512))'
 rootpw --iscrypted {{ val.user.root_password }}
 lang ja_JP
 timezone Asia/Tokyo --isUtc
