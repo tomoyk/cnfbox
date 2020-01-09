@@ -39,6 +39,10 @@ def get_content(req_id: int):
     return cursor.fetchone()
 
 
+def convert_format(target: str):
+    pass
+
+
 # DOWNLOAD KICKSTART
 @app.route('/conf/<int:conf_id>/kickstart', methods=['GET'])
 def read_conf_ks(conf_id):

@@ -17,5 +17,9 @@ autopart --nohome --nolvm
 # yum update
 repo --name=updates
 
+%packages
+@^minimal
+%end
+
 # Reboot after installation
 reboot --eject
