@@ -1,18 +1,18 @@
 keyboard '{{ val.os.keyboard | default("us") }}'
-rootpw --iscrypted {{ val.user.root_password }}
-lang ja_JP
+rootpw --iscrypted '{{ val.user.root_password }}'
+lang 'ja_JP'
 timezone Asia/Tokyo --isUtc
 text
 network --device=eth0 --bootproto=dhcp --onboot=yes --activate
-network --hostname=cbnoc-empty
-firewall --enabled --port=ssh,snmp
+network --hostname=example-empty
+firewall --enabled --port=ssh
 firstboot --enable
 selinux --permissive
 skipx
 
 bootloader --location=mbr
 clearpart --all --initlabel
-autopart --nohome --nolvm
+autopart
 
 # yum update
 repo --name=updates
