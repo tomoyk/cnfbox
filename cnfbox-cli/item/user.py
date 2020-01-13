@@ -2,7 +2,7 @@ import item.base
 
 
 class User(item.base.Base):
-    def __init__(self, root_password='', users: list = ["admin"]):
+    def __init__(self, root_password='', users: list = ["sysadm"]):
         self.root_password = self._get_random_txt()
         self.__name = users
         self.password = {u: self._get_random_txt() for u in users}

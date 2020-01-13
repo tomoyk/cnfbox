@@ -20,7 +20,7 @@ d-i netcfg/get_hostname string unassigned-hostname
 ########################################
 
 # ミラー
-#d-i mirror/protocol http
+# d-i mirror/protocol http
 d-i mirror/country string manual
 d-i mirror/http/hostname string jp.archive.ubuntu.com
 d-i mirror/http/directory string /ubuntu/
@@ -85,8 +85,8 @@ d-i clock-setup/utc boolean true
 d-i time/zone string {{ val.os.timezone | default("Asia/Tokyo") }}
 
 # User
-d-i passwd/user-fullname string admin
-d-i passwd/username string admin
+d-i passwd/user-fullname string sysadm
+d-i passwd/username string sysadm
 d-i passwd/user-password password {{ val.user.root_password }}
 d-i passwd/user-password-again password {{ val.user.root_password }}
 d-i passwd/user-default-groups string wheel
