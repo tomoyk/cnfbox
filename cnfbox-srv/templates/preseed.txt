@@ -7,17 +7,13 @@ d-i console-setup/layoutcode string us
 d-i console-setup/charmap select UTF-8
 
 # Keyboard
-d-i keyboard-configuration/layoutcode string jp
+d-i keyboard-configuration/layoutcode string {{ val.os.keyboard | default("us") }}
 d-i keyboard-configuration/modelcode jp106
 
 # Network(DHCP)
 d-i netcfg/choose_interface select auto
 d-i netcfg/disable_autoconfig boolean false
 d-i netcfg/get_hostname string unassigned-hostname
-d-i netcfg/get_domain string cdsl.inside
-
-# いったんリセット
-# d-i preseed/run string http://192.168.100.3/prescript.sh
 
 ########################################
 # END SEQUENCE CONF
@@ -85,18 +81,14 @@ d-i base-installer/install-recommends boolean true
 d-i base-installer/kernel/image string linux-generic
 
 # Timezone
-d-i clock-setup/utc boolean false
-d-i time/zone string Asia/Tokyo
-
-# NTP
-d-i clock-setup/ntp boolean true
-d-i clock-setup/ntp-server string ntp.nict.jp
+d-i clock-setup/utc boolean true
+d-i time/zone string {{ val.os.timezone | default("Asia/Tokyo") }}
 
 # User
-d-i passwd/user-fullname string hoge
-d-i passwd/username string hoge
-d-i passwd/user-password password set_your_password
-d-i passwd/user-password-again password set_your_password
+d-i passwd/user-fullname string admin
+d-i passwd/username string admin
+d-i passwd/user-password password {{ val.user.root_password }}
+d-i passwd/user-password-again password {{ val.user.root_password }}
 d-i passwd/user-default-groups string wheel
 d-i user-setup/allow-password-weak boolean true
 d-i user-setup/encrypt-home boolean false

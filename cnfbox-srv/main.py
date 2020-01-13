@@ -63,13 +63,9 @@ def read_conf_ks(conf_id):
 # DOWNLOAD PRESEED
 @app.route('/conf/<int:conf_id>/preseed', methods=['GET'])
 def read_conf_pr(conf_id):
-    with connection.cursor() as cursor:
-        sql = "SELECT `content` FROM `config` WHERE `id`=%s"
-        cursor.execute(sql, str(conf_id))
-        result = cursor.fetchone()
-    str_json = result.get('content')
-    return jsonify(json.loads(str_json))
-
+    raw_json = get_content(conf_id).get('content')
+    params = json.loads(raw_json)
+    return render_template('preseed.txt', val=params)
 
 # UPLOAD
 @app.route('/conf', methods=['POST'])
