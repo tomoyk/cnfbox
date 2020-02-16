@@ -1,11 +1,12 @@
 from cnfbox import CnfBox
 
 cb = CnfBox()
+cb.remote_url = 'https://cnfbox-dev.appspot.com/'
 
 cb.os.name = 'centos'
 cb.os.version = 8.0
-cb.os.lang = 'us'
-cb.os.keyboard = 'jp'
+cb.os.language = 'us'
+cb.os.keyboard_layout = 'jp'
 cb.os.timezone = 'Asia/Tokyo'
 
 cb.user.root_password = 'the-secure-password'
@@ -23,4 +24,4 @@ cb.storage.auto_partition = True
 cb.storage.clear_partition = True
 
 cb.show()
-cb.commit()
+# cb.commit()

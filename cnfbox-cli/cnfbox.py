@@ -30,6 +30,8 @@ class CnfBox(object):
         """ Get REMOTE URL """
         import os
         REMOTE_URL = os.getenv('REMOTE_URL')
+        if self.remote_url:
+            REMOTE_URL = self.remote_url
         assert REMOTE_URL, "Env Var 'REMOTE_URL' is not set."
 
         """ Build HTTP Request """

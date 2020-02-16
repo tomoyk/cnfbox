@@ -9,9 +9,9 @@ class Os(item.base.Base):
             self,
             name: str = 'ubuntu',
             version: float = 18.04,
-            lang: str = 'jp',
+            language_supported: str = 'jp',
             timezone: str = 'Asia/Tokyo',
-            keyboard: str = 'jp'):
+            keyboard_layout: str = 'jp'):
         assert name in Os.__NAME_LIST, f'"{name}" is not supported.'
         assert lang in Os.__COUNTRY_LIST, f'"{lang}" is not in acceptable language.'
         assert keyboard in Os.__COUNTRY_LIST, f'{keyboard} is not in acceptable language.'
