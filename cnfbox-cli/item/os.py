@@ -14,7 +14,7 @@ class Os(item.base.Base):
             keyboard_layout: str = 'jp'):
         assert name in Os.__NAME_LIST, f'"{name}" is not supported.'
         assert language_supported in Os.__COUNTRY_LIST, f'"{lang}" is not in acceptable language.'
-        assert keyboard_layout in Os.__COUNTRY_LIST, f'{keyboard} is not in acceptable language.'
+        assert keyboard_layout in Os.__COUNTRY_LIST, f'{keyboard} is not in acceptable keyboard layout.'
         self.name = name
         self.version = version
         self.language_supported = language_supported
