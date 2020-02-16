@@ -13,13 +13,13 @@ class Os(item.base.Base):
             timezone: str = 'Asia/Tokyo',
             keyboard_layout: str = 'jp'):
         assert name in Os.__NAME_LIST, f'"{name}" is not supported.'
-        assert lang in Os.__COUNTRY_LIST, f'"{lang}" is not in acceptable language.'
-        assert keyboard in Os.__COUNTRY_LIST, f'{keyboard} is not in acceptable language.'
+        assert language_supported in Os.__COUNTRY_LIST, f'"{lang}" is not in acceptable language.'
+        assert keyboard_layout in Os.__COUNTRY_LIST, f'{keyboard} is not in acceptable language.'
         self.name = name
         self.version = version
-        self.lang = lang
+        self.language_supported = language_supported
         self.timezone = timezone
-        self.keyboard = keyboard
+        self.keyboard_layout = keyboard_layout
 
     def __repr__(self):
         return super().__repr__()
