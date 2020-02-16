@@ -7,7 +7,7 @@ d-i console-setup/layoutcode string us
 d-i console-setup/charmap select UTF-8
 
 # Keyboard
-d-i keyboard-configuration/layoutcode string {{ val.os.keyboard | default("us") }}
+d-i keyboard-configuration/layoutcode string {{ val.os.keyboard_layout | default("us") }}
 d-i keyboard-configuration/modelcode jp106
 
 # Network(DHCP)

@@ -1,4 +1,4 @@
-keyboard '{{ val.os.keyboard | default("us") }}'
+keyboard '{{ val.os.keyboard_layout | default("us") }}'
 rootpw --iscrypted '{{ val.user.root_password }}'
 lang 'ja_JP'
 timezone {{ val.os.timezone | default("Asia/Tokyo") }} --isUtc
